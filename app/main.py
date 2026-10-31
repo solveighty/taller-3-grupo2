@@ -129,7 +129,7 @@ def listar_productos(_: Annotated[dict, Depends(verificar_token)]):
 def consultar_producto(sku: str, _: Annotated[dict, Depends(verificar_token)]):
     producto = ERP_PRODUCTOS.get(sku.upper())
     if producto is None:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
+        raise HTTPException(status_code=400, detail="Producto no encontrado")
     return producto
 
 
